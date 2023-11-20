@@ -11,12 +11,10 @@ Attributes are properties or characteristics of that entity.
 Attributes are sometimes referred to as fields. 
 
 """
-
-
 "To Do: Predict, then Run, and then Investigate"
 # create a dictionary 
-# sybtax: dictionary= {"key": "Jsome value"}
-dict1 = {"fName":"James Smith", "age": 23, "interests":"coding", "gamer":True, "fName":"Abdul Malik"}
+# syntax : dictionary = {"key":"some value"}
+dict1 = {"fName":"James Smith", "age": 23, "interests":"coding", "myAge":23,"gamer":True, "fName":"Abdul Malik"}
 print(dict1)
 print(dict1["fName"])
 print(dict1["age"])
@@ -25,7 +23,7 @@ print(dict1["age"])
 "Using dictionary methods"
 
 # D.items() -> a set-like object providing a view on D's items
-dItems =dict1.items()
+dItems = dict1.items()
 print(dItems)
 
 # D.keys() -> a set-like object providing a view on D's keys
@@ -33,22 +31,22 @@ dKeys = dict1.keys()
 print(dKeys)
 
 # D.values() -> an object providing a view on D's values
-dVals=dict1.values()
+dVals = dict1.values()
 print(dVals)
+
 
 "To Do: Task 1: Refer to the example code above to create your own dictionary with key value pairs and explain the differences between the items(), keys() and values() dictionary methods"
 
 # Loop through the keys ansd/values
-print("/nLoop through the keys and/values")
+print("\nLoop through the keys ansd/values")
 for aKey in dKeys:
     print(aKey)
+
 for aVal in dVals:
     print(aVal)
 
 for aKey, aVal in dItems:
-    print(f"key:{aKey}, value:{aVal}")
-
-
+    print(f"Key: {aKey} , Value: {aVal}")
 
 
 "To Do: Task 2: Modify"
@@ -56,14 +54,15 @@ for aKey, aVal in dItems:
 
 "To Do: Extension: Can you use the for loop with the items method to loop through the keys and values simultaneously"
 # Modify: The for loop block above to loop through the keys and the values and format your output
-""" 
+
 # create a dictionary 
 dict2 = {2:"Python", 3:"HTML", 4:"CSS"}
 print(f"Dictionary 2 {dict2}")
 
 
 # Use of the Update method to merge two dictionaries
-?.update(dict2)
+dict1.update(dict2)
+# .update(dict2)
 print(f"Updated dictionary 1\n{dict1}")
 
 "To Do: Task 2: Research: Look up Pop vs popItem explaind comment the code below to explain the difference"
@@ -72,8 +71,8 @@ print(f"Updated dictionary 1\n{dict1}")
 dict2.pop(3)
 print(dict2)
 
-# Add comment here to explain the function of th popItem() method.
-?.popitem()
+# # Add comment here to explain the function of th popItem() method.
+dict1.popitem()
 print(dict1)
 
 
@@ -83,13 +82,12 @@ print(dict1)
 
 del dict1[2]
 
-
 # update dictionary value using the key
-dict1[1] = "Emma Smith"
+dict1["gamer"] = "Emma Smith"
 user={"interests" :"coding"}
 
 print(user)
 user["interests"] = "Football"
 
 print(dict1)
-print(user)"""
+print(user)
