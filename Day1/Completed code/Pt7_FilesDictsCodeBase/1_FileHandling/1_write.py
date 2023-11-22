@@ -36,6 +36,9 @@ filePath1.write("My name is Abdul")
 # close the filepath and file/ releasing the resource
 filePath1.close()
 
+
+
+
 "To Do: Refer to the example code above to create a file called yourName.txt and Write your name to the file" 
 # If stuck refer to the example above
 "Further reading"
