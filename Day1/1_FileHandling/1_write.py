@@ -30,10 +30,8 @@ The text file must be saved in the same location as your Python file for the pro
 
 "1_FileHandling_ReadWrite/myfile.txt","w"
 "Syntax :  varName = openMethod('pathtofolder/parthtofile/fileName.txt', 'w')"
-filePath1 = open('OneDrive_1_20-11-2023/1_FileHandling/file1.txt', 'w') # folder/folder/filename
+filePath1 = open('Day1/1_FileHandling/file3.txt', 'w') # folder/folder/filename
 # write to file
-
-
 
 
 filePath1.write("Python Programming")
@@ -44,6 +42,21 @@ filePath1.close()
 # If stuck refer to the example above
 "Further reading"
 # https://www.w3docs.com/snippets/python/how-to-read-a-text-file-into-a-list-or-an-array-with-python.html
+
+
+
+# Practicing creating new txt files:
+
+
+
+
+
+
+
+
+
+
+
 
 
 
