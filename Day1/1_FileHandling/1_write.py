@@ -34,6 +34,8 @@ filePath1 = open('OneDrive_1_20-11-2023/1_FileHandling/file1.txt', 'w') # folder
 # write to file
 
 
+
+
 filePath1.write("Python Programming")
 # close the filepath and file/ releasing the resource
 filePath1.close()

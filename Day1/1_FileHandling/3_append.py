@@ -11,6 +11,11 @@ contents = "/nHello/nHow/nare/nyou?"
 
 filePath1.write(contents)
 
+
+
+
+
+
 "To Do: Task 1: Task 1: Refer to the example code above to use the context manager to:"
 # append to your file (yourName.txt), your interests and a fake address
 
