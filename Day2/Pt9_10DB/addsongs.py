@@ -19,3 +19,10 @@ def insert_songs():
     print(f"{songTitle} inserted into songs table")
 if __name__ == "__main__":
     insert_songs()
+
+
+    #QUESTION FOR ABDUL:
+    #How do we make changes to my table "songs", for example?
+    #do we need to alter the table?delete data based on ID, etc?
+    #Do we do that by creating a new file to make the changes,
+    #e.g. altersongs.py?
