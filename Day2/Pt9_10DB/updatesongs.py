@@ -3,12 +3,14 @@ from connect import *
 def update_songs():
     # use primary key to update a record
 
-    idField = input("ENter the song ID of the rocord you want to update: ")
+    idField = input("ENter the song ID of the record you want to update: ")
 
     # field to update 
     fieldName = input("Enter Title or Artist or Genre as field name: ").title()
 
     fieldValue = input(f"Enter the value for {fieldName} field: ")
+
+    
     # (1, 'Bad', 'MJ', 'Pop')
 
     "method 1"
