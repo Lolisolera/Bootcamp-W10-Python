@@ -3,7 +3,7 @@ from connect import *
 def delete_songs():
     # use primary key to update a record
  
-    idField = input("ENter the song ID of the record you want to update: ")
+    idField = input("ENter the song ID of the record you want to delete: ")
  
     dbCursor.execute(f"DELETE FROM songs WHERE SongID= {idField}")
     # or
