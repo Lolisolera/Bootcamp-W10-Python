@@ -1,19 +1,18 @@
 from connect import *
 
 def update_songs():
-    # use primary key to update a record
+    # Use primary key to update a record
+    idField = input("Enter the song ID of the record you want to update: ")
 
-    idField = input("ENter the song ID of the record you want to update: ")
-
-    # field to update 
+    # Field to update 
     fieldName = input("Enter Title or Artist or Genre as field name: ").title()
 
+    # Value for the field
     fieldValue = input(f"Enter the value for {fieldName} field: ")
 
-    
-    # (1, 'Bad', 'MJ', 'Pop')
+      # (1, 'Bad', 'MJ', 'Pop')
 
-    "method 1"
+   # "method 1"
     fieldValue = "'"+fieldValue+"'"
     
     # "method 2"
@@ -22,8 +21,9 @@ def update_songs():
     # num = "2"
     # int(mum)
 
-    # update a record 
-    dbCursor.execute(f"UPDATE songs SET {fieldName}  = {fieldValue} WHERE SongID = {idField} ")
+    # Update a record 
+    query = f"UPDATE songs SET {fieldName} = ? WHERE SongID = ?"
+    dbCursor.execute(query, (fieldValue, idField))
 
     dbCon.commit()
 
