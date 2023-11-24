@@ -20,6 +20,6 @@ def mutltipleInsert():
     # Commit the change
     dbCon.commit()
  
-    print(songsData[5], "Added to songs table")
+    print(songsData[1], "Added to songs table")
  
 mutltipleInsert()
