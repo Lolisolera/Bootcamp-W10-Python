@@ -8,7 +8,7 @@ def menuFile():
         songFileData = songMenuFile.read()
         return songFileData
     
-print(menuFile())
+#print(menuFile())
 
 def songsMenu():
     option = 0 # initialise the option variable with an integer value 0
