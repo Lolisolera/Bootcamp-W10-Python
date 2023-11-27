@@ -1,12 +1,14 @@
- 
+from connect import dbCursor, dbCon
 # create a subroutine
 def insert_tblFilms():
     # FilmId is auto increment field and not data input is required
  
     # ask user for input for Title, Rating, Genre
-    filmTitle = input("Enter film Title: ")
-    filmRating = input("Enter film Rating: ")
-    filmGenre = input("Enter film Genre: ")
+    filmTitle = input("Enter film title: ")
+    filmYearReleased = input("Enter film year released: ")
+    filmRating = input("Enter film rating: ")
+    filmDuration = input("Enter film duration: ")
+    filmGenre = input("Enter film genre: ")
  
     #insert data into the films table
     dbCursor.execute("INSERT INTO tblFilms(Title, Rating, Genre) VALUES(?,?,?)",(filmTitle, filmRating, filmGenre))

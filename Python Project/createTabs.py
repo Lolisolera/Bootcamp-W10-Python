@@ -1,3 +1,5 @@
+from connect import * 
+
 dbCursor.execute("""
 CREATE TABLE tblFilms
     (
