@@ -1,6 +1,6 @@
  
 # create a subroutine
-def insert_films():
+def insert_tblFilms():
     # FilmId is auto increment field and not data input is required
  
     # ask user for input for Title, Rating, Genre
@@ -9,7 +9,7 @@ def insert_films():
     filmGenre = input("Enter film Genre: ")
  
     #insert data into the films table
-    dbCursor.execute("INSERT INTO films(Title, Rating, Genre) VALUES(?,?,?)",(filmTitle, filmRating, filmGenre))
+    dbCursor.execute("INSERT INTO tblFilms(Title, Rating, Genre) VALUES(?,?,?)",(filmTitle, filmRating, filmGenre))
    
     # Commit the change
     dbCon.commit()
@@ -17,4 +17,4 @@ def insert_films():
     # testing
     print(f"{filmTitle} inserted into songs table")
 if __name__ == "__main__":
-    insert_films()
+    insert_tblFilms()
