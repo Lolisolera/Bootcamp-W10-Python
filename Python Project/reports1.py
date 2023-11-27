@@ -1,7 +1,7 @@
 from connect import dbCursor, dbCon
  
 # create subroutine
-def reports():
+def reports1():
     #dbCursor.execute("SELECT title FROM tblFilms ORDER BY title DESC ")
     #dbCursor.execute("SELECT * FROM tblFilms WHERE Genre = 'Crime' OR Genre ='Action' ")
     #dbCursor.execute("SELECT * FROM tblFilms WHERE Genre LIKE 'r%' ")
@@ -12,4 +12,4 @@ def reports():
     for records in reportsData:
         print(records)
 if __name__ == "__main__":
-    reports()
+    reports1()

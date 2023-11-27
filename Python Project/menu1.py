@@ -1,5 +1,5 @@
 
-import readfilms, addfilms, updatefilms, deletefilms, reports
+import readfilms, addfilms, updatefilms, deletefilms, reports1
 
 #create function
 def menuFile():
@@ -55,7 +55,7 @@ while mainProgram: # while True
         deletefilms.delete_tblFilms()
     
     elif mainMenu == "5":
-        reports.reports()
+        reports1.reports()
     
     else:
         # reassign the boolean variable of 'mainProgram' False
