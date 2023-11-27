@@ -8,3 +8,4 @@ dbCon = sql.connect('Python Project/filmflix.db')
 
 #create a cursor variable and assigned it to the cursor method to execute sql statements
 dbCursor = dbCon.cursor()
+
