@@ -1,4 +1,4 @@
-from connect import *
+from connect1 import *
  
 def delete_tblFilms():
     # use primary key to update a record

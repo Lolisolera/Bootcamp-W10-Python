@@ -1,4 +1,4 @@
-from connect import dbCursor, dbCon
+from connect1 import dbCursor, dbCon
 # create a subroutine
 def insert_tblFilms():
     # FilmId is auto increment field and not data input is required

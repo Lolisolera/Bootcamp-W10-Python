@@ -1,4 +1,4 @@
-from connect import dbCursor, dbCon
+from connect1 import dbCursor, dbCon
 
 def update_tblFilms():
     # Use primary key to update a record

@@ -1,4 +1,4 @@
-from connect import dbCursor, dbCon
+from connect1 import dbCursor, dbCon
  
 # create subroutine
 def reports1():
