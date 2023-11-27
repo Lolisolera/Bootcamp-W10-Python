@@ -10,7 +10,7 @@ def menuFile():
         return filmFileData 
     
 
-    """
+    
 #print(menuFile())
 
 def filmsMenu():
@@ -25,7 +25,7 @@ def filmsMenu():
         print(choiceMenu) # display the options from the menu file
 
         # re-assign the value of the option variable 
-        option = input("Enter an option from the films Main menu: ")
+        option = input("Enter an option from the Films Main menu: ")
         # if user input is not on the list
         if option not in optionsList:
             # do this/execute the code below
@@ -60,6 +60,5 @@ while mainProgram: # while True
     else:
         # reassign the boolean variable of 'mainProgram' False
         mainProgram = False
-input("Enter to quit Films App")#
+input("Press Enter to quit Films App")#
 
-"""
