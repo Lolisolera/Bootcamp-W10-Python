@@ -13,7 +13,7 @@ def update_tblFilms():
       # (1, 'Lost', '1999', 'PG', '90', 'Adventure')
 
    # "method 1"
-    fieldValue = "'"+fieldValue+"'"
+    fieldValue = fieldValue
     
     # "method 2"
     # tuple(fieldValue)
