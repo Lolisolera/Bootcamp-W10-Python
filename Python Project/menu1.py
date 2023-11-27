@@ -55,7 +55,7 @@ while mainProgram: # while True
         deletefilms.delete_tblFilms()
     
     elif mainMenu == "5":
-        reports1.reports()
+        reports1.reports1()
     
     else:
         # reassign the boolean variable of 'mainProgram' False
