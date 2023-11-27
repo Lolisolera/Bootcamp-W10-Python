@@ -11,7 +11,7 @@ def insert_tblFilms():
     filmGenre = input("Enter film genre: ")
  
     #insert data into the films table
-    dbCursor.execute("INSERT INTO tblFilms(Title, Rating, Genre) VALUES(?,?,?)",(filmTitle, filmRating, filmGenre))
+    dbCursor.execute("INSERT INTO tblFilms(Title, YearReleased, Rating, Duration, Genre) VALUES(?,?,?,?,?)",(filmTitle, filmYearReleased, filmRating, filmDuration, filmGenre))
    
     # Commit the change
     dbCon.commit()
