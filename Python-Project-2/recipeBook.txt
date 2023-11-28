@@ -1,0 +1,8 @@
+The Recipe Book Main Menu options
+Enter:
+1. Print all recipes
+2. Add a recipe
+3. Update a recipe
+4. Delete a recipe
+5. Select report option
+6. Exit the Recipe Book App
