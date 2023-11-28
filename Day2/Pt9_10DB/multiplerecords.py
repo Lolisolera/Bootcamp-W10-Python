@@ -1,6 +1,6 @@
 from connect import *
  
-def mutltipleInsert():
+def multipleInsert():
  
     # create a list []
     songsData = [
@@ -22,4 +22,4 @@ def mutltipleInsert():
  
     print(songsData[1], "Added to songs table")
  
-mutltipleInsert()
+multipleInsert()
