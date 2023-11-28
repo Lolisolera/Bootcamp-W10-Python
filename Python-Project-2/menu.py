@@ -1,19 +1,19 @@
 
-import readfilms, addfilms, updatefilms, deletefilms, reports1
+import readrecipes, addrecipes, updaterecipes, deleterecipes, reports
 
 #create function
 def menuFile():
-    with open('Python Project/filmsMenu.txt') as filmMenuFile:
+    with open('Python-Project-2/recipeBook.txt') as recipeMenuFile:
 
         #read from menu and assign it to a varaible
-        filmFileData = filmMenuFile.read()
-        return filmFileData 
+        recipeFileData = recipeMenuFile.read()
+        return recipeFileData 
     
 
     
 #print(menuFile())
 
-def filmsMenu():
+def recipeMenu():
     option = 0 # initialise the option variable with an integer value 0
     optionsList = ["1","2","3","4","5","6"]
 
@@ -25,13 +25,13 @@ def filmsMenu():
         print(choiceMenu) # display the options from the menu file
 
         # re-assign the value of the option variable 
-        option = input("Enter an option from the Films Main menu: ")
+        option = input("Enter an option from the Recipe Book Main menu: ")
         # if user input is not on the list
         if option not in optionsList:
             # do this/execute the code below
             print(f"{option} is not a valid choice! ")
     return option
-# print(filmsMenu())
+# print(recipeMenu())
 
 # create a boolean variable 
 mainProgram = True
@@ -61,4 +61,3 @@ while mainProgram: # while True
         # reassign the boolean variable of 'mainProgram' False
         mainProgram = False
 input("Press Enter to quit Films App")#
-
