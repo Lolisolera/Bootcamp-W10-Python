@@ -37,7 +37,7 @@ def filmsMenu():
 mainProgram = True
 
 while mainProgram: # while True
-    # initialise the filmsMenu function with the choiceMenu mainSongsMenu 
+    # initialise the filmsMenu function with the choiceMenu mainFilmsMenu 
     mainMenu = filmsMenu()
 
      # if the user input is string value 1

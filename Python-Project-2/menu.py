@@ -37,27 +37,27 @@ def recipeMenu():
 mainProgram = True
 
 while mainProgram: # while True
-    # initialise the filmsMenu function with the choiceMenu mainSongsMenu 
-    mainMenu = filmsMenu()
+    # initialise the recipeMenu function with the choiceMenu mainRecipeMenu 
+    mainMenu = recipeMenu()
 
      # if the user input is string value 1
     if mainMenu == "1":
        # , then call the function the readfilms file
-        readfilms.read_tblFilms()
+        readrecipes.read_recipeBook()
 
     elif mainMenu == "2":
-        addfilms.insert_tblFilms()
+        addrecipes.insert_recipeBook()
 
     elif mainMenu == "3":
-        updatefilms.update_tblFilms()
+        updaterecipes.update_recipeBook()
 
     elif mainMenu == "4":
-        deletefilms.delete_tblFilms()
+        deleterecipes.delete_recipeBook()
     
     elif mainMenu == "5":
-        reports1.reports1()
+        reports.reports()
     
     else:
         # reassign the boolean variable of 'mainProgram' False
         mainProgram = False
-input("Press Enter to quit Films App")#
+input("Press Enter to quit Recipe Book App")#
