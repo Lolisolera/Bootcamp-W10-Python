@@ -9,8 +9,7 @@ def menuFile():
         recipeFileData = recipeMenuFile.read()
         return recipeFileData 
     
-
-    
+   
 #print(menuFile())
 
 def recipeMenu():

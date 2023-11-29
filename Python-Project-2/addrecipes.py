@@ -1,5 +1,6 @@
 from connect import dbCursor, dbCon
 
+# create a subroutine
 def insert_recipeBook():
     # RecipeId is an auto-increment field, and no data input is required
 
@@ -11,8 +12,17 @@ def insert_recipeBook():
         else:
             print("Invalid input. Please enter a valid recipe name (text only).")
 
-    Ingredients = input("Enter recipe ingredients: ")
+    while True:   
+        Ingredients = input("Enter recipe ingredients: ")  
+        if not Ingredients.isnumeric(): # Check if the input contains only text
+            break
+        else:
+            print("Invalid input. Please enter valid a ingredient name (text only).")
+
+  
     Instructions = input("Enter recipe instructions: ")
+
+
 
     # Insert data into the recipe book table
     dbCursor.execute("INSERT INTO recipeBook(RecipeName, Ingredients, Instructions) VALUES(?,?,?)", (recipeName, Ingredients, Instructions))
