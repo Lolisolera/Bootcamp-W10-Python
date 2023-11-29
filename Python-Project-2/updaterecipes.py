@@ -1,8 +1,13 @@
 from connect import dbCursor, dbCon
 
 def update_recipeBook():
-    # Use primary key to update a record
-    idField = input("Enter the recipe ID of the record you want to update: ")
+    #Use primary key to update a record
+    while True:
+        idField = input("Enter the recipe ID of the record you want to update: ")
+        if idField.isdigit():  # Check if the input is a valid number
+            break
+        else:
+            print("Invalid input. Recipe ID should be a number.")
 
     # Field to update 
     fieldName = input("Enter RecipeName or Ingredients or Instructions as field name: ").title()
@@ -31,3 +36,4 @@ def update_recipeBook():
 
 if __name__ == "__main__":
     update_recipeBook()
+    
