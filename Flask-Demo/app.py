@@ -12,4 +12,3 @@ def base():
 def test():
     return render_template("test.html")
 
-
