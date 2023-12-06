@@ -63,6 +63,17 @@ def update():
 def read():
     return render_template("read.html")
 
+
+@app.route("/exit", methods=["GET"])
+def exit(): 
+    if request.method == "GET":
+        # Handle POST request
+        # ...
+      return "Thanks for using FilmFlix App. Goodbye!"
+    else:
+        # Handle GET request (render template, etc.)
+        return render_template("exit.html")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
 
@@ -105,4 +116,4 @@ if __name__ == '__main__':
         # Create the database tables
         db.create_all()
     # Run the Flask app
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
