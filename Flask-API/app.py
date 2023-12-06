@@ -1,19 +1,11 @@
 from flask import Flask, render_template, request
-
-app = Flask(__name__,static_url_path="/static")
-
-import os
-
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///filmflix.db'
 db = SQLAlchemy(app)
 api = Api(app)
-
-
-db = SQLAlchemy()
 
 class Film(db.Model):
     filmID = db.Column(db.Integer, primary_key=True)
@@ -26,9 +18,8 @@ class Film(db.Model):
     def __repr__(self):
         return f"<Film {self.filmID}: {self.title}>"
 
-
-
 # Existing routes for rendering HTML pages and handlers endpoints
+
 @app.route("/")
 def base():
     return render_template("base.html")
@@ -76,7 +67,6 @@ if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
 
 
-
 # Create your API resources
 class FilmResource(Resource):
     def get(self, film_id):
@@ -105,17 +95,14 @@ class FilmListResource(Resource):
         db.session.commit()
         return {'filmID': new_film.filmID, 'title': new_film.title, 'year': new_film.year,
                 'rating': new_film.rating, 'duration': new_film.duration, 'genre': new_film.genre}, 201
-    
 
-    # SHOULD I WRITE HERE THE SAME CODE FOR DELETE AND THE REST OF THE FILES? ALSO, WHAT CAN I DO WITH THE ABOVE CODE TO TEST?
-
+# Add resources to the API
 api.add_resource(FilmListResource, '/films')
 api.add_resource(FilmResource, '/films/<int:film_id>')
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        # Create the database tables
+        db.create_all()
+    # Run the Flask app
     app.run(debug=True)
-
-
-
-
