@@ -28,20 +28,38 @@ class Film(db.Model):
 
 
 
-# Your existing routes for rendering HTML pages
+# Existing routes for rendering HTML pages
 @app.route("/")
 def base():
     return render_template("base.html")
 
 
-@app.route("/add") # POST handler/endpoint
+
+@app.route("/add", methods=["GET", "POST"])
 def add():
-    return render_template("add.html")
+    if request.method == "POST":
+        # Handle POST request
+        # ...
+        return "Add a film."
+    else:
+        # Handle GET request (render template, etc.)
+        return render_template("add.html")
 
 
-@app.route("/delete") # DELETE handler/endpoint
+
+
+@app.route("/delete", methods=["GET", "DELETE"])
 def delete():
     return render_template("delete.html")
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0")
+
+
+
+
+
+
 
 
 @app.route("/menu")  # GET handler/endpoint
@@ -95,6 +113,9 @@ class FilmListResource(Resource):
         db.session.commit()
         return {'filmID': new_film.filmID, 'title': new_film.title, 'year': new_film.year,
                 'rating': new_film.rating, 'duration': new_film.duration, 'genre': new_film.genre}, 201
+    
+
+    # SHOULD I WRITE HERE THE SAME CODE FOR DELETE AND THE REST OF THE FILES? ALSO, WHAT CAN I DO WITH THE ABOVE CODE TO TEST?
 
 api.add_resource(FilmListResource, '/films')
 api.add_resource(FilmResource, '/films/<int:film_id>')
