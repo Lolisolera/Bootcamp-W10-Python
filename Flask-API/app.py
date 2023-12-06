@@ -28,7 +28,7 @@ class Film(db.Model):
 
 
 
-# Existing routes for rendering HTML pages
+# Existing routes for rendering HTML pages and handlers endpoints
 @app.route("/")
 def base():
     return render_template("base.html")
@@ -47,39 +47,31 @@ def add():
 
 
 
-
 @app.route("/delete", methods=["GET", "DELETE"])
 def delete():
     return render_template("delete.html")
 
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
 
 
-
-
-
-
-
-
-@app.route("/menu")  # GET handler/endpoint
+@app.route("/menu", methods=["GET"])
 def menu():
     return render_template("menu.html")
 
 
-@app.route("/reports")  # GET handler/endpoint
+@app.route("/reports", methods=["GET"])
 def reports():
     return render_template("reports.html")
 
 
-@app.route("/update")  # PUT/PATCH handler/endpoint
+@app.route("/update", methods= ["GET", "PUT"])
 def update():
     return render_template("update.html")
 
 
-@app.route("/read")  # GET handler/endpoint
+@app.route("/read", methods=["GET", "DELETE"])
 def read():
     return render_template("read.html")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
 
