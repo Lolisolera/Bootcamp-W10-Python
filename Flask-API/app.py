@@ -63,15 +63,8 @@ def update():
 def read():
     return render_template("read.html")
 
-
 @app.route("/exit", methods=["GET"])
-def exit(): 
-    if request.method == "GET":
-        # Handle POST request
-        # ...
-      return "Thanks for using FilmFlix App. Goodbye!"
-    else:
-        # Handle GET request (render template, etc.)
+def exit():
         return render_template("exit.html")
 
 if __name__ == "__main__":
