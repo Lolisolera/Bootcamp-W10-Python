@@ -3,14 +3,19 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource
 
 app = Flask(__name__, static_url_path="/static")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///filmflix.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/mariadoloressoleramarquez/BOOTCAMP-W10-PYTHON/Flask-API/data/filmflix.db'
+
 db = SQLAlchemy(app)
 api = Api(app)
 
+
+
+
 class Film(db.Model):
+    __tablename__ = 'tblFilms'  # Ensure the table name matches the one in your database
     filmID = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
-    year = db.Column(db.Integer)
+    yearReleased = db.Column(db.Integer)
     rating = db.Column(db.Float)
     duration = db.Column(db.Integer)
     genre = db.Column(db.String(255))
@@ -59,9 +64,18 @@ def update():
     return render_template("update.html")
 
 
-@app.route("/read", methods=["GET", "DELETE"])
+
+@app.route("/read", methods=["GET"])
 def read():
-    return render_template("read.html")
+    if request.method == "GET":
+        # Fetch all films from the database
+        films = Film.query.all()
+        return render_template("read.html", films=films)
+    else:
+        # Handle other methods if needed
+        return render_template("read.html")
+
+
 
 @app.route("/exit", methods=["GET"])
 def exit():

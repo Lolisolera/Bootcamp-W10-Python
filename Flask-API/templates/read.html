@@ -2,10 +2,18 @@
 
 
 {% block title %}
-<title>Read Films Page</title>
+<title>Print Films Page</title>
 {% endblock %}
 
 
 {% block content %}
-<h1>Read Films</h1>
+<h1>List of Films</h1>
+<ul>
+    {% for film in films %}
+    <li>{{ film.filmID }}: {{ film.title }} - {{ film.yearReleased }} - {{ film.rating }} - {{ film.duration }} - {{
+        film.genre }}</li>
+    {% endfor %}
+</ul>
+
+
 {% endblock %}
