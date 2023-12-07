@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource
+from datetime import datetime 
+
 
 app = Flask(__name__, static_url_path="/static")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/mariadoloressoleramarquez/BOOTCAMP-W10-PYTHON/Flask-API/data/filmflix.db'
@@ -33,26 +35,45 @@ def base():
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        # Handle POST request to add a new film
         title = request.form.get('title')
-        year_released = request.form.get('year_released')
-        rating = request.form.get('rating')
-        duration = request.form.get('duration')
+        year_released = int(request.form.get('yearReleased'))
+        rating = int(request.form.get('rating'))
+        duration = int(request.form.get('duration'))
         genre = request.form.get('genre')
 
-        new_film = Film(title=title, yearReleased=year_released, rating=rating, duration=duration, genre=genre)
+
+        current_year = datetime.now().year
+
+        # Validation check for yearReleased
+        if not (1800 <= year_released <= current_year):
+            return "Invalid year released. Please enter a year between 1800 and the current year."
+
+        # Validation checks
+        if not title.isalpha():
+            return "Invalid characters in the title. Please use only letters and spaces."
+                
+        if not (1800 <= year_released <= current_year):
+            return "Invalid year. Please enter a year between 1800 and the current year."
+
+        if not (1 <= rating <= 5):
+            return "Invalid rating. Please enter a number between 1 and 5."
+
+        if duration < 1:
+            return "Invalid duration. Please enter a positive number."
+        
+            # Validation check for genre
+        if not genre.isalpha():
+            return "Invalid characters in the genre. Please use only letters and spaces."
+
+
+        # If all validation passes, add the film to the database
+        new_film = Film(title=title, yearReleased=year_released, rating=rating, duration=duration)
         db.session.add(new_film)
         db.session.commit()
 
         return redirect(url_for('read'))  # Redirect to the read page after adding the film
     else:
-        # Handle GET request (render the form)
         return render_template("add.html")
-
-
-
-
-
 
 
 @app.route("/delete", methods=["GET", "DELETE"])
