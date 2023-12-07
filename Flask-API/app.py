@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource
 
@@ -30,16 +30,28 @@ def base():
     return render_template("base.html")
 
 
-
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        # Handle POST request
-        # ...
-        return "Add a film."
+        # Handle POST request to add a new film
+        title = request.form.get('title')
+        year_released = request.form.get('year_released')
+        rating = request.form.get('rating')
+        duration = request.form.get('duration')
+        genre = request.form.get('genre')
+
+        new_film = Film(title=title, yearReleased=year_released, rating=rating, duration=duration, genre=genre)
+        db.session.add(new_film)
+        db.session.commit()
+
+        return redirect(url_for('read'))  # Redirect to the read page after adding the film
     else:
-        # Handle GET request (render template, etc.)
+        # Handle GET request (render the form)
         return render_template("add.html")
+
+
+
+
 
 
 
@@ -56,7 +68,13 @@ def menu():
 
 @app.route("/reports", methods=["GET"])
 def reports():
-    return render_template("reports.html")
+    if request.method == "GET":
+        # Fetch all films from the database
+         films = Film.query.all() 
+         return render_template("reports.html", films=films)
+    else:
+        # Handle other methods if needed
+        return render_template("read.html")
 
 
 @app.route("/update", methods= ["GET", "PUT"])

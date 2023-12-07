@@ -8,4 +8,11 @@
 
 {% block content %}
 <h1>FilmFlix Reports</h1>
+
+<ul>
+    {% for film in films %}
+    <li>{{ film.filmID }}: {{ film.title }} - {{ film.yearReleased }} - {{ film.rating }} - {{ film.duration }} - {{
+        film.genre }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
