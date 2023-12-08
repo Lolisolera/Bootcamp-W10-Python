@@ -56,13 +56,22 @@ def add():
 
         current_year = datetime.now().year
 
+        if request.headers['Content-Type'] == 'application/json':
+            # Handle JSON data
+            data = request.json
+            year_released_str = data.get('yearReleased')
+        elif request.headers['Content-Type'] == 'application/x-www-form-urlencoded':
+            # Handle form data
+            year_released_str = request.form.get('yearReleased')
+        else:
+            return "Unsupported Media Type", 415
+
         try:
-            year_released_str = request.form.get('yearReleased') or request.json.get('yearReleased')
             if year_released_str is not None:
                 year_released = int(year_released_str)
             else:
                 return "Year released is required."
-        except Exception as e:
+        except ValueError as e:
             print(f"Error converting 'yearReleased' to int: {e}")
             return "Internal Server Error", 500
 
@@ -93,6 +102,7 @@ def add():
         return redirect(url_for('read'))  # Redirect to the read page after adding the film
     else:
         return render_template("add.html")
+
 
 
 
