@@ -148,8 +148,24 @@ def reports():
         return render_template("read.html")
 
 
-@app.route("/update", methods= ["GET", "PUT"])
+@app.route("/update", methods=["GET", "POST"])
 def update():
+    if request.method == "POST":
+        film_id = request.form.get('filmID')
+        film = Film.query.get(film_id)
+
+        if film:
+            field_to_update = request.form.get('field')
+            new_value = request.form.get('newValue')
+
+            # Update the chosen field with the new value
+            setattr(film, field_to_update, new_value)
+
+            db.session.commit()
+            return redirect(url_for('read'))  # Redirect to the read page after updating the film
+        else:
+            return "Film not found."
+
     return render_template("update.html")
 
 
