@@ -105,10 +105,30 @@ def add():
 
 
 
-
-@app.route("/delete", methods=["GET", "DELETE"])
+@app.route("/delete", methods=["GET", "POST"])
 def delete():
-    return render_template("delete.html")
+    if request.method == "POST":
+        film_id = request.form.get('filmID')
+
+        if film_id is None:
+            return "FilmID is required for deletion."
+
+        try:
+            film_id = int(film_id)
+        except ValueError:
+            return "Invalid FilmID. Please enter a valid number."
+
+        film_to_delete = Film.query.get(film_id)
+
+        if film_to_delete:
+            db.session.delete(film_to_delete)
+            db.session.commit()
+            return redirect(url_for('read'))  # Redirect to the read page after deletion
+        else:
+            return "Film not found."
+
+    else:
+        return render_template("delete.html")
 
 
 

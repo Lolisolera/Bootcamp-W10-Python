@@ -7,14 +7,12 @@
 
 
 {% block content %}
-<h1>Add a New Films</h1>
+<h1>Add a New Film</h1>
 
 <form class="form-container" method="POST" action="{{ url_for('add') }}">
     <label class="form-label" for="title">Title:</label>
     <input class="form-input" type="text" name="title" pattern="[A-Za-z ]+" title="Only letters and spaces are allowed"
         required>
-
-
 
     <label class="form-label" for="yearReleased">Year Released:</label>
     <input class="form-input" type="number" name="yearReleased" min="1800" max="{{ current_year }}"
