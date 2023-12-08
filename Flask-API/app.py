@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource
 from datetime import datetime 
+import re
 
 
 app = Flask(__name__, static_url_path="/static")
@@ -32,48 +33,67 @@ def base():
     return render_template("base.html")
 
 
+
+        # Validation check for yearReleased
+       
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
         title = request.form.get('title')
-        year_released = int(request.form.get('yearReleased'))
-        rating = int(request.form.get('rating'))
-        duration = int(request.form.get('duration'))
-        genre = request.form.get('genre')
+        
+        # Check if 'rating' field is present in the form data
+        rating_str = request.form.get('rating')
+        if rating_str is None:
+            return "Rating is required."
 
+        try:
+            rating = int(rating_str)
+        except ValueError:
+            return "Invalid rating. Please enter a valid number."
+
+        duration_str = request.form.get('duration')
+        genre = request.form.get('genre')
 
         current_year = datetime.now().year
 
-        # Validation check for yearReleased
-        if not (1800 <= year_released <= current_year):
-            return "Invalid year released. Please enter a year between 1800 and the current year."
+        try:
+            year_released_str = request.form.get('yearReleased') or request.json.get('yearReleased')
+            if year_released_str is not None:
+                year_released = int(year_released_str)
+            else:
+                return "Year released is required."
+        except Exception as e:
+            print(f"Error converting 'yearReleased' to int: {e}")
+            return "Internal Server Error", 500
 
-        # Validation checks
-        if not title.isalpha():
+        # Validate the title using a regular expression
+        if not all(word.isalpha() or word.isspace() for word in title.split()):
             return "Invalid characters in the title. Please use only letters and spaces."
-                
-        if not (1800 <= year_released <= current_year):
-            return "Invalid year. Please enter a year between 1800 and the current year."
 
         if not (1 <= rating <= 5):
             return "Invalid rating. Please enter a number between 1 and 5."
 
-        if duration < 1:
-            return "Invalid duration. Please enter a positive number."
-        
-            # Validation check for genre
-        if not genre.isalpha():
+        if duration_str is not None:
+            try:
+                duration = int(duration_str)
+                if duration < 1:
+                    return "Invalid duration. Please enter a positive number."
+            except ValueError:
+                return "Invalid duration. Please enter a valid number."
+
+        # Validation check for genre
+        if genre is not None and not all(word.isalpha() or word.isspace() for word in genre.split()):
             return "Invalid characters in the genre. Please use only letters and spaces."
 
-
         # If all validation passes, add the film to the database
-        new_film = Film(title=title, yearReleased=year_released, rating=rating, duration=duration)
+        new_film = Film(title=title, yearReleased=year_released, rating=rating, duration=duration, genre=genre)
         db.session.add(new_film)
         db.session.commit()
 
         return redirect(url_for('read'))  # Redirect to the read page after adding the film
     else:
         return render_template("add.html")
+
 
 
 @app.route("/delete", methods=["GET", "DELETE"])
@@ -162,4 +182,4 @@ if __name__ == '__main__':
         # Create the database tables
         db.create_all()
     # Run the Flask app
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0",  pin_security=True)
