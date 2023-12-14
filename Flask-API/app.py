@@ -160,15 +160,15 @@ def update():
 
 
 
-@app.route("/read", methods=["GET"])
+@app.route("/list", methods=["GET"])
 def read():
     if request.method == "GET":
         # Fetch all films from the database
         films = Film.query.all()
-        return render_template("read.html", films=films)
+        return render_template("list.html", films=films)
     else:
         # Handle other methods if needed
-        return render_template("read.html")
+        return render_template("list.html")
 
 
 
