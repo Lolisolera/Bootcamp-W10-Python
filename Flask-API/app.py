@@ -137,16 +137,6 @@ def menu():
     return render_template("menu.html")
 
 
-@app.route("/reports", methods=["GET"])
-def reports():
-    if request.method == "GET":
-        # Fetch all films from the database
-         films = Film.query.all() 
-         return render_template("reports.html", films=films)
-    else:
-        # Handle other methods if needed
-        return render_template("read.html")
-
 
 @app.route("/update", methods=["GET", "POST"])
 def update():
