@@ -12,8 +12,6 @@ db = SQLAlchemy(app)
 api = Api(app)
 
 
-
-
 class Film(db.Model):
     __tablename__ = 'tblFilms'  # Ensure the table name matches the one in your database
     filmID = db.Column(db.Integer, primary_key=True)
